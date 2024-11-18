@@ -1,0 +1,40 @@
+services:
+  traefik:
+    extends:
+      file: compose/traefik.yml
+      service: traefik
+
+  app:
+    extends:
+      file: compose/app.yml
+      service: app
+
+  core:
+    extends:
+      file: compose/core.yml
+      service: core
+
+  victoria-metrics:
+    extends:
+      file: compose/monitoring.yml
+      service: victoria-metrics
+
+  grafana:
+    extends:
+      file: compose/monitoring.yml
+      service: grafana
+
+  database:
+    extends:
+      file: compose/database.yml
+      service: database
+
+  redis:
+    extends:
+      file: compose/redis.yml
+      service: redis
+networks:
+  traefik-public:
+    external: true
+  internal:
+    external: false

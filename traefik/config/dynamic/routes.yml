@@ -1,0 +1,62 @@
+http:
+  routers:
+    grafana:
+      rule: "Host(`grafana.yourdomain.com`)"
+      service: grafana
+      entryPoints:
+        - websecure
+      middlewares:
+        - secure-headers
+        - rate-limit
+      tls: {}
+
+    victoria-metrics:
+      rule: "Host(`metrics.yourdomain.com`)"
+      service: victoria-metrics
+      entryPoints:
+        - websecure
+      middlewares:
+        - secure-headers
+        - rate-limit
+      tls: {}
+
+    app:
+      rule: "Host(`yourdomain.com`)"
+      service: app
+      entryPoints:
+        - websecure
+      middlewares:
+        - secure-headers
+        - compression
+      tls: {}
+
+    core:
+      rule: "Host(`api.yourdomain.com`)"
+      service: core
+      entryPoints:
+        - websecure
+      middlewares:
+        - secure-headers
+        - rate-limit
+      tls: {}
+
+  services:
+    grafana:
+      loadBalancer:
+        servers:
+          - url: "http://grafana:3000"
+
+    victoria-metrics:
+      loadBalancer:
+        servers:
+          - url: "http://victoria-metrics:8428"
+
+    app:
+      loadBalancer:
+        servers:
+          - url: "http://app:80"
+
+    core:
+      loadBalancer:
+        servers:
+          - url: "http://core:8000"

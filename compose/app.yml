@@ -1,0 +1,7 @@
+services:
+  app:
+    image: ghcr.io/www-printf/wepress-app:latest
+    container_name: wepress_app
+    restart: unless-stopped
+    networks:
+      - traefik-public

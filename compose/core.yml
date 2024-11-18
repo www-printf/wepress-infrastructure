@@ -1,0 +1,7 @@
+services:
+  core:
+    image: ghcr.io/www-printf/wepress-core:latest
+    container_name: wepress_core
+    restart: unless-stopped
+    networks:
+      - traefik-public
