@@ -13,7 +13,7 @@ services:
       - internal
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.metrics.rule=Host(`metrics.yourdomain.com`)"
+      - "traefik.http.routers.metrics.rule=Host(`metrics.printf.store`)"
 
   grafana:
     image: grafana/grafana:10.0.0
@@ -23,14 +23,8 @@ services:
       - ./monitoring/grafana/provisioning:/etc/grafana/provisioning
       - ./monitoring/grafana/grafana.ini:/etc/grafana/grafana.ini
       - grafana-data:/var/lib/grafana
-    environment:
-      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD}
     networks:
       - internal
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.grafana.rule=Host(`grafana.yourdomain.com`)"
-
-volumes:
-  vm-data:
-  grafana-data:
+      - "traefik.http.routers.grafana.rule=Host(`grafana.printf.store`)"

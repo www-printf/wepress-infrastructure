@@ -1,7 +1,7 @@
 http:
   routers:
     grafana:
-      rule: "Host(`grafana.yourdomain.com`)"
+      rule: "Host(`grafana.printf.store`)"
       service: grafana
       entryPoints:
         - websecure
@@ -11,7 +11,7 @@ http:
       tls: {}
 
     victoria-metrics:
-      rule: "Host(`metrics.yourdomain.com`)"
+      rule: "Host(`metrics.printf.store`)"
       service: victoria-metrics
       entryPoints:
         - websecure
@@ -21,7 +21,7 @@ http:
       tls: {}
 
     app:
-      rule: "Host(`yourdomain.com`)"
+      rule: "Host(`printf.store`)"
       service: app
       entryPoints:
         - websecure
@@ -31,7 +31,7 @@ http:
       tls: {}
 
     core:
-      rule: "Host(`api.yourdomain.com`)"
+      rule: "Host(`api.printf.store`)"
       service: core
       entryPoints:
         - websecure

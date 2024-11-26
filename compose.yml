@@ -3,38 +3,65 @@ services:
     extends:
       file: compose/traefik.yml
       service: traefik
+    env_file:
+      - ./env/traefik.env
+      - ./env/all.env
 
   app:
     extends:
       file: compose/app.yml
       service: app
+    env_file:
+      - ./env/app.env
+      - ./env/all.env
 
   core:
     extends:
       file: compose/core.yml
       service: core
+    env_file:
+      - ./env/core.env
+      - ./env/all.env
 
   victoria-metrics:
     extends:
       file: compose/monitoring.yml
       service: victoria-metrics
+    env_file:
+      - ./env/monitoring.env
+      - ./env/all.env
 
   grafana:
     extends:
       file: compose/monitoring.yml
       service: grafana
+    env_file:
+      - ./env/monitoring.env
+      - ./env/all.env
 
   database:
     extends:
       file: compose/database.yml
-      service: database
+      service: postgres
+    env_file:
+      - ./env/database.env
+      - ./env/all.env
 
   redis:
     extends:
       file: compose/redis.yml
       service: redis
+    env_file:
+      - ./env/redis.env
+      - ./env/all.env
 networks:
   traefik-public:
     external: true
   internal:
     external: false
+
+volumes:
+  vm-data:
+  grafana-data:
+  postgres-data:
+  redis-data:
