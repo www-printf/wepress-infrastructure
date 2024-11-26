@@ -8,7 +8,6 @@ services:
       - "6379:6379"
     volumes:
       - redis-data:/data
-      - ./redis/conf/redis.conf:/usr/local/etc/redis/redis.conf
     environment:
       - TZ=UTC+7
     networks:

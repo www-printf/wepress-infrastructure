@@ -40,6 +40,10 @@ http:
         - rate-limit
       tls: {}
 
+    dashboard:
+      rule: "Host(`dashboard.printf.store`)"
+      service: api@internal
+
   services:
     grafana:
       loadBalancer:

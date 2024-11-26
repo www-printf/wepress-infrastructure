@@ -10,12 +10,9 @@ services:
       - "443:443"
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./traefik/config/traefik.yml:/etc/traefik/traefik.yml:ro
       - ./traefik/config/dynamic:/etc/traefik/dynamic:ro
       - ./traefik/certs:/certs:ro
       - ./traefik/acme:/acme
     networks:
       - traefik-public
-    labels:
-      - "traefik.enable=true"

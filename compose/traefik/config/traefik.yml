@@ -4,7 +4,7 @@ global:
 
 api:
   dashboard: true
-  insecure: false
+  insecure: true
 
 entryPoints:
   web:
@@ -21,10 +21,6 @@ entryPoints:
         certResolver: letsencrypt
 
 providers:
-  docker:
-    endpoint: "unix:///var/run/docker.sock"
-    exposedByDefault: false
-    network: traefik-public
   file:
     directory: /etc/traefik/dynamic
     watch: true

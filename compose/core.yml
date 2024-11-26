@@ -5,3 +5,5 @@ services:
     restart: unless-stopped
     networks:
       - traefik-public
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"

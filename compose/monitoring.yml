@@ -11,9 +11,6 @@ services:
       - "--retentionPeriod=1"
     networks:
       - internal
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.metrics.rule=Host(`metrics.printf.store`)"
 
   grafana:
     image: grafana/grafana:10.0.0
@@ -25,6 +22,3 @@ services:
       - grafana-data:/var/lib/grafana
     networks:
       - internal
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.grafana.rule=Host(`grafana.printf.store`)"
