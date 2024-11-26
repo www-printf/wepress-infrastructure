@@ -54,6 +54,12 @@ services:
     env_file:
       - ./env/redis.env
       - ./env/all.env
+
+  image-watcher:
+    image: docker.io/containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
 networks:
   traefik-public:
     external: true
