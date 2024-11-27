@@ -32,3 +32,6 @@ certificatesResolvers:
       storage: /acme/acme.json
       httpChallenge:
         entryPoint: web
+
+metrics:
+  prometheus: {}

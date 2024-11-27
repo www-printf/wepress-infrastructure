@@ -55,6 +55,16 @@ services:
       - ./env/redis.env
       - ./env/all.env
 
+  node-exporter:
+    extends:
+      file: compose/exporter.yml
+      service: node-exporter
+  
+  cadvisor:
+    extends:
+      file: compose/exporter.yml
+      service: cadvisor
+
   image-watcher:
     image: docker.io/containrrr/watchtower
     volumes:

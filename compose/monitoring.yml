@@ -5,10 +5,17 @@ services:
     restart: unless-stopped
     volumes:
       - vm-data:/storage
+      - ./monitoring/victoria-metrics:/etc/prometheus
     command:
-      - "--storageDataPath=/storage"
-      - "--httpListenAddr=:8428"
-      - "--retentionPeriod=1"
+      - '--storageDataPath=/storage'
+      - '--httpListenAddr=:8428'
+      - '--retentionPeriod=1y'
+      - '--search.maxUniqueTimeseries=3000000'
+      - '--search.maxQueryDuration=1m'
+      - '--dedup.minScrapeInterval=15s'
+      - '--promscrape.config=/etc/prometheus/prometheus.yml'
+      - '--promscrape.maxScrapeSize=64MB'
+      - '--promscrape.config.strictParse=false'
     networks:
       - deploy
       - traefik-public
@@ -20,6 +27,10 @@ services:
       - ./monitoring/grafana/provisioning:/etc/grafana/provisioning
       - ./monitoring/grafana/grafana.ini:/etc/grafana/grafana.ini
       - grafana-data:/var/lib/grafana
+    environment:
+      - GF_INSTALL_PLUGINS=grafana-piechart-panel,grafana-worldmap-panel,victoriametrics-datasource
     networks:
       - deploy
       - traefik-public
+    labels:
+      org.label-schema.group: "monitoring"
