@@ -11,7 +11,6 @@ services:
       - "5432:5432"
     networks:
       - internal
-    command: postgres -c config_file=/etc/postgresql/postgresql.conf
     labels:
       - "traefik.enable=false"
       - "com.centurylinklabs.watchtower.enable=true"
