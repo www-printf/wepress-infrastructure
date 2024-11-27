@@ -25,10 +25,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./monitoring/grafana/provisioning:/etc/grafana/provisioning
-      - ./monitoring/grafana/grafana.ini:/etc/grafana/grafana.ini
       - grafana-data:/var/lib/grafana
-    environment:
-      - GF_INSTALL_PLUGINS=grafana-piechart-panel,grafana-worldmap-panel,victoriametrics-datasource
     networks:
       - deploy
       - traefik-public
