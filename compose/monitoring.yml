@@ -10,8 +10,8 @@ services:
       - "--httpListenAddr=:8428"
       - "--retentionPeriod=1"
     networks:
-      - internal
-
+      - deploy
+      - traefik-public
   grafana:
     image: grafana/grafana:10.0.0
     container_name: grafana
@@ -21,4 +21,5 @@ services:
       - ./monitoring/grafana/grafana.ini:/etc/grafana/grafana.ini
       - grafana-data:/var/lib/grafana
     networks:
-      - internal
+      - deploy
+      - traefik-public

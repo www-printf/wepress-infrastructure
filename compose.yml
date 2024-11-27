@@ -65,8 +65,8 @@ services:
 networks:
   traefik-public:
     external: true
-  internal:
-    external: false
+  deploy:
+    driver: bridge
 
 volumes:
   vm-data:
