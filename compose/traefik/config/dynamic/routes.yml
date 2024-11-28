@@ -8,7 +8,6 @@ http:
       middlewares:
         - secure-headers
         - rate-limit
-      tls: {}
 
     victoria-metrics:
       rule: "Host(`metrics.printf.store`)"
@@ -18,7 +17,6 @@ http:
       middlewares:
         - secure-headers
         - rate-limit
-      tls: {}
 
     app:
       rule: "Host(`printf.store`)"
@@ -28,7 +26,6 @@ http:
       middlewares:
         - secure-headers
         - compression
-      tls: {}
 
     core:
       rule: "Host(`api.printf.store`)"
@@ -38,7 +35,6 @@ http:
       middlewares:
         - secure-headers
         - rate-limit
-      tls: {}
 
     dashboard:
       rule: "Host(`dashboard.printf.store`)"
