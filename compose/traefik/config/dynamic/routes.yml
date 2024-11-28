@@ -28,14 +28,13 @@ http:
         - compression
 
     core:
-      rule: "Host(`printf.store`) && PathPrefix(`/api/v1`)"
+      rule: "Host(`api.printf.store`)"
       service: core
       entryPoints:
         - websecure
       middlewares:
         - secure-headers
         - rate-limit
-      tls: {}
 
     dashboard:
       rule: "Host(`dashboard.printf.store`)"
