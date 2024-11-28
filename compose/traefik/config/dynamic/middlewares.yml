@@ -30,3 +30,7 @@ http:
           - "image/gif"
           - "image/webp"
           - "application/pdf"
+    auth:
+      basicAuth:
+        users:
+          - "admin:$apr1$iZ9vklL7$sxIAz9Fu3.cNzLIvn/Xac."

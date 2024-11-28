@@ -39,7 +39,10 @@ http:
     dashboard:
       rule: "Host(`dashboard.printf.store`)"
       service: api@internal
-
+      secured:
+      middlewares:
+        - auth
+        
   services:
     grafana:
       loadBalancer:

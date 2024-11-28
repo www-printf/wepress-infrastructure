@@ -33,5 +33,20 @@ certificatesResolvers:
       httpChallenge:
         entryPoint: web
 
+accessLog:
+  filePath: "/var/log/traefik/access.log"
+  format: json
+  fields:
+    headers:
+      defaultMode: keep
+      names:
+        Authorization: drop
+    names:
+      ClientUsername: keep
+      ClientHost: keep
+      RequestPath: keep
+      RequestMethod: keep
+      DownstreamStatus: keep
+
 metrics:
   prometheus: {}
